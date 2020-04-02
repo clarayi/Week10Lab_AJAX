@@ -10,6 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/notes.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -44,11 +46,13 @@
                 <input type="hidden" name="action" value="add"/>
             </c:if>
             <c:if test="${whatToDo eq 'Edit'}">
-                <input type="hidden" name="action" value="edit=${editNoteID}"/>
+                <input type="hidden" name="action" value="edit=${editNoteID}" id="hiddenID"/>
             </c:if>
             <input type="text" placeholder="Title" value="${titleBox}" name="inputTitle"/><br>
-            <textarea rows="7" cols="30" form="form2" name="inputContents">${textareaBox}</textarea>
-            <input type="submit" value="${whatToDo}"/>
+            <textarea rows="7" cols="30" form="form2" name="inputContents" id="noteContent">${textareaBox}</textarea>
+            <c:if test="${whatToDo eq 'Add'}">
+                <input type="submit" value="${whatToDo}"/>
+            </c:if>
         </form>
     </body>
 </html>
